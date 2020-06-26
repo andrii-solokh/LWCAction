@@ -1,0 +1,11 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId">
+    <aura:attribute name="isLoading" type="Boolean" default="true"/>
+    <lightning:quickActionAPI aura:id="qaAPI"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <div>
+      {!v.body}
+      <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner alternativeText="Loading..."/>
+      </aura:if>
+    </div>
+</aura:component>	
