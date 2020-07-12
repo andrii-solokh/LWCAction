@@ -4,7 +4,7 @@
 </a>
 
 # LWCAction
-To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid creating new not needed Aura Components, coding close Lightning Action event handler, adding spinners, we can create generic Aura Component which will dynamically create LWC depending on Lighting Action API Name.
+To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid creating new not needed Aura Components, coding close Lightning Action event handlers, adding spinners, we can create generic Aura Component which will dynamically create LWC depending on Lighting Action API Name.
 
 ### How to use
 1. In LWC component's '.js-meta.xml' file update 'isExposed' field:
