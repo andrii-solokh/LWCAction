@@ -16,7 +16,7 @@ To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid 
 4. LWC should extend 'LwcAction':
 ```
 import LwcAction from 'c/lwcAction'
-export default class AccountForecastManagerAction extends LwcAction {}
+export default class QuoteApplyDiscountAction extends LwcAction {}
 ```
 5. When LWC is ready to show content (data is loaded usually), call:
 ```
