@@ -28,6 +28,10 @@ this.ready()
 ```
 this.closeAction()
 ```
+From template '{closeAction} accordingly
+```
+<lightning-button label="Close" variant="brand-outline" onclick={closeAction}></lightning-button>
+```
 
 - To show spinner:
 ```
