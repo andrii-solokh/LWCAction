@@ -63,3 +63,21 @@ this.showToast('title', 'message', 'info')
     }
 ```
 If 'value.error' is not null or passed callback throw error, the Lighting Action will be closed and error will be shown with Toast Message.
+
+- You can hide component before it has loaded all necessary data by wrapping it with:
+```
+<template if:true={isReady}></template>
+```
+Example:
+```
+<template>
+  <template if:true={isReady}>
+    <div>Your component</div>
+  </template>
+<template>
+```
+And calling when needed:
+```
+this.ready()
+```
+This method also hides spinner.
