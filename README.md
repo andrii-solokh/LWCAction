@@ -18,7 +18,7 @@ To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid 
 import LwcAction from 'c/lwcAction'
 export default class QuoteApplyDiscountAction extends LwcAction {}
 ```
-5. When LWC is ready to show content (data is loaded usually), call:
+5. When LWC is ready, to stop spinner, call:
 ```
 this.ready()
 ```
@@ -43,7 +43,7 @@ this.showSpinner()
 this.hideSpinner()
 ```
 
-- Id of record from which Lighting Action was invoked is passed to LWC and can be accessed with:
+- Id of Record from which Lighting Action was invoked is passed to LWC and can be accessed with:
 ```
 this.recordId
 ```
@@ -67,7 +67,7 @@ this.showToast('title', 'message', 'info')
 }
 ```
 
-- You can hide component before it has loaded all necessary data by wrapping it with:
+- You can keep component hiden until it's ready to be presented by wrapping it with:
 ```
 <template if:true={isReady}></template>
 ```
