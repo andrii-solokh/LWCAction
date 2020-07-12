@@ -79,7 +79,7 @@ Example:
   </template>
 <template>
 ```
-To present LWC and hide call:
+To present LWC and hide spinner call:
 ```
 this.ready()
 ```
