@@ -39,7 +39,7 @@ this.showSpinner()
 this.hideSpinner()
 ```
 
-- Id of record from which Lighting Action was invoked is passed to LWC and can be accessed using:
+- Id of record from which Lighting Action was invoked is passed to LWC and can be accessed with:
 ```
 this.recordId
 ```
@@ -50,7 +50,7 @@ this.recordId
 this.showToast('title', 'message', 'info')
 ```
 
-- To simplify wire service use 'handleWire', example:
+- To simplify wire method use 'handleWire()', example:
 ```
 @wire (getData, {accountId: '$recordId', quartersCount: '$quartersCount'}) wireData (value) {
         this.wiredData = value
@@ -76,8 +76,7 @@ Example:
   </template>
 <template>
 ```
-And calling when needed:
+To present LWC and hide call:
 ```
 this.ready()
 ```
-This method also hides spinner.
