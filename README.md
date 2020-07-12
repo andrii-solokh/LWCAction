@@ -57,14 +57,14 @@ this.showToast('title', 'message', 'info')
 - To simplify wire method use 'handleWire(value, (data) => {})'. If 'value.error' is not null or passed callback throw error, the Lighting Action will be closed and error will be shown with Toast Message. example:
 ```
 @wire (getData, {accountId: '$recordId', quartersCount: '$quartersCount'}) wireData (value) {
-        this.wiredData = value
-        this.handleWire(value, data => {
-            if (data.opportunities.length == 0) {
-                throw 'No opportunities'
-            }
-            this.initFilters(data.opportunities)
-        })
-    }
+    this.wiredData = value
+    this.handleWire(value, data => {
+        if (data.opportunities.length == 0) {
+            throw 'No opportunities'
+        }
+        this.initFilters(data.opportunities)
+    })
+}
 ```
 
 - You can hide component before it has loaded all necessary data by wrapping it with:
