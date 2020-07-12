@@ -28,7 +28,7 @@ this.ready()
 ```
 this.closeAction()
 ```
-From template '{closeAction} accordingly
+From template '{closeAction} accordingly:
 ```
 <lightning-button label="Close" onclick={closeAction}></lightning-button>
 ```
