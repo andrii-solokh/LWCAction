@@ -9,5 +9,5 @@
             height: auto !important;
         }
     </aura:html>
-    <c:LWCContainerAction recordId="{!v.recordId}"/>
+    <c:LWCLightningAction recordId="{!v.recordId}"/>
 </aura:component>	
