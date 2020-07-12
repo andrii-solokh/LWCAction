@@ -31,20 +31,15 @@ export default class LwcAction extends LightningElement {
         try {
             if (error) {
                 throw error.body.message
-            } else if (data) {
-                const status = data.status
-                if (status === 'ERROR') {
-                    throw data.error_message
-                } else if (status === 'SUCCESS') {
-                    action(data)
-                }
+            } else {
+                action(data)
             }
         } catch(error) {
-            let message = error.message || error
-            console.error(error);
             this.hideSpinner()
-            this.closeAction()
+            let message = error.message || error
             this.showToast('Error', message, 'error')
+            console.error(error)
+            this.closeAction()
         }
     }
 
