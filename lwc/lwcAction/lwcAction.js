@@ -31,7 +31,7 @@ export default class LwcAction extends LightningElement {
         try {
             if (error) {
                 throw error.body.message
-            } else {
+            } else if (data) {
                 action(data)
             }
         } catch(error) {
