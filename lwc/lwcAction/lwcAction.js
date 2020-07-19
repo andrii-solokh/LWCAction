@@ -6,19 +6,35 @@ export default class LwcAction extends LightningElement {
     isReady = false
 
     closeAction() {
-        this.dispatchEvent(new CustomEvent('СloseAction'))
+        this.dispatchEvent(LwcAction.getCloseActionEvent())
     }
 
     showSpinner() {
-        this.dispatchEvent(this.spinnerEvent(true))
+        this.dispatchEvent(LwcAction.getSpinnerEvent(true))
     }
 
     hideSpinner() {
-        this.dispatchEvent(this.spinnerEvent(false))
+        this.dispatchEvent(LwcAction.getSpinnerEvent(false))
     }
 
-    spinnerEvent(isLoading) {
-        return new CustomEvent('SetLoading', {detail:{isLoading: isLoading}})
+    static fireCloseAction(element) {
+        element.dispatchEvent(LwcAction.getCloseActionEvent())
+    }
+
+    static fireShowSpinner(element) {
+        element.dispatchEvent(LwcAction.getSpinnerEvent(true))
+    }
+
+    static fireHideSpinner(element) {
+        element.dispatchEvent(LwcAction.getSpinnerEvent(false))
+    }
+
+    static getSpinnerEvent(isLoading) {
+        return new CustomEvent('SetLoading', { detail: { isLoading: isLoading }, composed: true, bubbles: true })
+    }
+
+    static getCloseActionEvent(isLoading) {
+        return new CustomEvent('СloseAction', { composed: true, bubbles: true })
     }
 
     ready() {
@@ -35,11 +51,11 @@ export default class LwcAction extends LightningElement {
                 action(data)
             }
         } catch(error) {
-            this.hideSpinner()
             let message = error.message || error
-            this.showToast('Error', message, 'error')
-            console.error(error)
+            console.error(error);
+            this.hideSpinner()
             this.closeAction()
+            this.showToast('Error', message, 'error')
         }
     }
 
