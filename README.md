@@ -47,6 +47,18 @@ this.hideSpinner()
 ```
 this.recordId
 ```
+### Actions not in LwcAction context
+- If you need to close action, show or hide spinner not from LwcAction component you can do it this way:
+1. Import 'LwcAction':
+```
+import LwcAction from'c/lwcAction'
+```
+2. Invoke needed method:
+```
+LwcAction.fireCloseAction(this) // to close Lighting Action
+LwcAction.fireShowSpinner(this) // to show spinner
+LwcAction.fireHideSpinner(this) // to hide spinner
+```
 
 ### Additional Features
 - To show Toast Message call 'showToast(title, message, variant)':
