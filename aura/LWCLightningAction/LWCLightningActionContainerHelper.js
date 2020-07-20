@@ -12,8 +12,8 @@
         $A.createComponent(
             `c:${lwcName}`, {
                 recordId : recordId, 
-                onСloseAction: component.getReference('c.onСloseAction'),
-                onSetLoading: component.getReference('c.onSetLoading'),
+                onclose_action: component.getReference('c.onСloseAction'),
+                onset_loading: component.getReference('c.onSetLoading'),
             },
             function(lwcCmp, status, errorMessage) {
                 if (status === "SUCCESS") {
@@ -33,7 +33,7 @@
     closeAction: function() {
         $A.get('e.force:closeQuickAction').fire();
     },
-    setLoading: function(component, loading=true) {
-        component.set("v.isLoading", loading);
+    setLoading: function(component, isLoading=true) {
+        component.set("v.isLoading", isLoading);
     },
 })
