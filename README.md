@@ -11,7 +11,7 @@ To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid 
 ```
 <isExposed>true</isExposed>
 ```
-2. Lightning Action should invoke Aura Component 'LWCLightningAction' / 'LWCLightningActionMedium' / 'LWCLightningActionHuge' depending on size.
+2. Lightning Action should invoke Aura Component 'LWCLightningAction' / 'LWCLightningActionMedium' / 'LWCLightningActionHuge' depending on needed size.
 3. Lightning Action API Name should be same as LWC API Name. I can advise naming LWC as 'SObjectName + ActionName + Action', example: 'quoteApplyDiscountAction'.
 4. LWC should extend 'LwcAction':
 ```
