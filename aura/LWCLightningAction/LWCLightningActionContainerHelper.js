@@ -14,8 +14,7 @@
                 recordId : recordId, 
                 onclose_action: component.getReference('c.onСloseAction'),
                 onset_loading: component.getReference('c.onSetLoading'),
-            },
-            function(lwcCmp, status, errorMessage) {
+            }, (lwcCmp, status, errorMessage) => {
                 if (status === "SUCCESS") {
                     var body = component.get("v.body");
                     body.push(lwcCmp);
@@ -23,9 +22,13 @@
                 }
                 else if (status === "INCOMPLETE") {
                     console.log("No response from server or client is offline.");
+                    this.showToast('Error', `No response from server or client is offline.`, 'error')
+                    $A.enqueueAction(component.get('c.onСloseAction'))
                 }
                 else if (status === "ERROR") {
                     console.error("Error: " + errorMessage);
+                    this.showToast('Error', `The '${lwcName}' LWC can't be find. Check if it's exposed.`, 'error')
+                    $A.enqueueAction(component.get('c.onСloseAction'))
                 }
             }
         );
@@ -33,7 +36,16 @@
     closeAction: function() {
         $A.get('e.force:closeQuickAction').fire();
     },
-    setLoading: function(component, isLoading=true) {
-        component.set("v.isLoading", isLoading);
+    setLoading: function(component, loading=true) {
+        component.set("v.isLoading", loading);
     },
+    showToast: function(title, message, type) {
+        let toast = $A.get('e.force:showToast')
+        toast.setParams({
+            title: title,
+            message: message,
+            type: type
+        })
+        toast.fire()
+    }
 })
