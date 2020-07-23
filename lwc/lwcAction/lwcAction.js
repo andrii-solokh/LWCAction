@@ -30,11 +30,11 @@ export default class LwcAction extends LightningElement {
     }
 
     static getSpinnerEvent(isLoading) {
-        return new CustomEvent('set_loading', { detail: { isLoading: isLoading }, composed: true, bubbles: true })
+        return new CustomEvent('setloading', { detail: { isLoading: isLoading }, composed: true, bubbles: true })
     }
 
     static getCloseActionEvent(isLoading) {
-        return new CustomEvent('close_action', { composed: true, bubbles: true })
+        return new CustomEvent('closeaction', { composed: true, bubbles: true })
     }
 
     ready() {
