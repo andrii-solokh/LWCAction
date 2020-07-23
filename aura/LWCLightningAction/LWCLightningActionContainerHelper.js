@@ -12,8 +12,8 @@
         $A.createComponent(
             `c:${lwcName}`, {
                 recordId : recordId, 
-                onclose_action: component.getReference('c.onСloseAction'),
-                onset_loading: component.getReference('c.onSetLoading'),
+                oncloseaction: component.getReference('c.onСloseAction'),
+                onsetloading: component.getReference('c.onSetLoading'),
             }, (lwcCmp, status, errorMessage) => {
                 if (status === "SUCCESS") {
                     var body = component.get("v.body");
