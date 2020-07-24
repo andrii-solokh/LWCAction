@@ -4,7 +4,7 @@
 </a>
 
 # LWCAction
-To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid creating new not needed Aura Components, coding close Lightning Action event handlers, adding spinners, we can create generic Aura Component which will dynamically create LWC depending on Lighting Action API Name.
+To use LWC as Lightning Action we need to wrap it with Aura Component. Instead of creating new unnecessary Aura Components, coding close Lightning Action event handlers and adding spinners, we can create generic Aura Component which will dynamically create LWC depending on Lighting Action API Name.
 
 ### How to use
 1. In LWC component's '.js-meta.xml' file update 'isExposed' field:
@@ -12,19 +12,19 @@ To use LWC as Lightning Action we need to wrap it with Aura Component. To avoid 
 <isExposed>true</isExposed>
 ```
 2. Lightning Action should invoke Aura Component 'LWCLightningAction' / 'LWCLightningActionMedium' / 'LWCLightningActionHuge' depending on needed size.
-3. Lightning Action API Name should be same as LWC API Name. I can advise naming LWC as 'SObjectName + ActionName + Action', example: 'quoteApplyDiscountAction'.
+3. Lightning Action API Name should be the same as LWC API Name. I can advise naming LWC as 'SObjectName + ActionName + Action', example: 'quoteApplyDiscountAction'.
 4. LWC should extend 'LwcAction':
 ```
 import LwcAction from 'c/lwcAction'
 export default class QuoteApplyDiscountAction extends LwcAction {}
 ```
-5. When LWC is ready, to stop spinner, call:
+5. Stop spinner when LWC is ready:
 ```
 this.ready()
 ```
 
 ### Features
-- For closing action from LWC call: 
+- Closing action from LWC: 
 ```
 this.closeAction()
 ```
@@ -33,22 +33,22 @@ From template '{closeAction}' accordingly:
 <lightning-button label="Close" onclick={closeAction}></lightning-button>
 ```
 
-- To show spinner:
+- Show spinner:
 ```
 this.showSpinner()
 ```
 
-- To hide spinner:
+- Hide spinner:
 ```
 this.hideSpinner()
 ```
 
-- To refresh view:
+- Refresh view:
 ```
 this.refreshView()
 ```
 
-- To fire any Aura Event, 'this.fireAuraEvent(eventName, params):
+- Fire any Aura Event, 'this.fireAuraEvent(eventName, params):
 ```
 this.fireAuraEvent('e.force:createRecord', { entityApiName: "Contact" })
 ```
@@ -58,27 +58,28 @@ this.fireAuraEvent('e.force:createRecord', { entityApiName: "Contact" })
 this.recordId
 ```
 ### Actions not in LwcAction context
-- If you need to close action, show or hide spinner not from LwcAction component you can do it this way:
+- To close action, show or hide spinner from component other than LwcAction:
 1. Import 'LwcAction':
 ```
 import LwcAction from'c/lwcAction'
 ```
-2. Invoke needed method:
+2. Invoke required method:
 ```
-LwcAction.fireCloseAction(this) // to close Lighting Action
-LwcAction.fireShowSpinner(this) // to show spinner
-LwcAction.fireHideSpinner(this) // to hide spinner
-LwcAction.fireRefreshView(this) // to refresh view
-LwcAction.fireAuraEvent(this, 'e.force:createRecord', { entityApiName: "Contact" }) // to call any Aura event with params
+LwcAction.fireCloseAction(this) // close Lighting Action
+LwcAction.fireShowSpinner(this) // show spinner
+LwcAction.fireHideSpinner(this) // hide spinner
+LwcAction.fireRefreshView(this) // refresh view
+LwcAction.fireAuraEvent(this, 'e.force:createRecord', { entityApiName: "Contact" }) // call any Aura event with params
 ```
 
 ### Additional Features
-- To show Toast Message call 'showToast(title, message, variant)':
+- Show Toast Message call 'showToast(title, message, variant)':
 ```
 this.showToast('title', 'message', 'info')
 ```
 
-- To simplify wire method use 'handleWire(value, (data) => {})'. If 'value.error' is not null or passed callback throw error, the Lighting Action will be closed and error will be shown with Toast Message. example:
+- To simplify wire method use 'handleWire(value, (data) => {})'. If 'value.error' is not null or passed callback throws error, the Lighting Action will be closed and error will be shown with Toast Message. 
+Example:
 ```
 @wire (getData, {accountId: '$recordId', quartersCount: '$quartersCount'}) wireData (value) {
     this.wiredData = value
@@ -91,7 +92,7 @@ this.showToast('title', 'message', 'info')
 }
 ```
 
-- You can keep component hiden until it's ready to be presented by wrapping it with:
+- You can keep component hidden until it's ready to be presented by wrapping it with:
 ```
 <template if:true={isReady}></template>
 ```
@@ -103,7 +104,7 @@ Example:
   </template>
 <template>
 ```
-To present LWC and hide spinner call:
+Present LWC and hide spinner call:
 ```
 this.ready()
 ```
