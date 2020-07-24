@@ -1,11 +1,11 @@
 ({
     onInit : function(component, event, helper) {
-        helper.init(component, event);
+        helper.init(component, event)
     },
-    onСloseAction : function(component, event, helper) {
-        helper.closeAction();
+    onAuraEvent : function(component, event, helper) {
+        helper.fireAuraEvent(event.getParam('name'), event.getParam('params'))
     },   
     onSetLoading : function(component, event, helper) {
-        helper.setLoading(component, event.getParam('isLoading'));
+        helper.setLoading(component, event.getParam('isLoading'))
     },
 })
