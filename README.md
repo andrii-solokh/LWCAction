@@ -43,6 +43,16 @@ this.showSpinner()
 this.hideSpinner()
 ```
 
+- To refresh view:
+```
+this.refreshView()
+```
+
+- To fire any Aura Event, 'this.fireAuraEvent(eventName, params):
+```
+this.fireAuraEvent('e.force:createRecord', { entityApiName: "Contact" })
+```
+
 - Id of Record from which Lighting Action was invoked is passed to LWC and can be accessed with:
 ```
 this.recordId
@@ -58,6 +68,8 @@ import LwcAction from'c/lwcAction'
 LwcAction.fireCloseAction(this) // to close Lighting Action
 LwcAction.fireShowSpinner(this) // to show spinner
 LwcAction.fireHideSpinner(this) // to hide spinner
+LwcAction.fireRefreshView(this) // to refresh view
+LwcAction.fireAuraEvent(this, 'e.force:createRecord', { entityApiName: "Contact" }) // to call any Aura event with params
 ```
 
 ### Additional Features
