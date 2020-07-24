@@ -1,4 +1,10 @@
 <aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId">
+<aura:html tag="style">
+        .slds-modal__content {
+            max-height: 95vh !important;
+            height: auto !important;
+        }
+    </aura:html>
     <aura:attribute name="isLoading" type="Boolean" default="true"/>
     <lightning:quickActionAPI aura:id="qaAPI"/>
     <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
