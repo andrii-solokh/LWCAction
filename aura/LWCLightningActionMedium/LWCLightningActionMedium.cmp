@@ -4,10 +4,6 @@
             max-width: 65vw;
             width: auto;
         }
-        .slds-modal__content {
-            max-height: 65vh !important;
-            height: auto !important;
-        }
     </aura:html>
     <c:LWCLightningAction recordId="{!v.recordId}"/>
 </aura:component>	
