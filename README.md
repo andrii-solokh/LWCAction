@@ -53,9 +53,10 @@ this.refreshView()
 this.fireAuraEvent('e.force:createRecord', { entityApiName: "Contact" })
 ```
 
-- Id of Record from which Lighting Action was invoked is passed to LWC and can be accessed with:
+- Id and sObject name of Record from which Lighting Action was invoked is passed to LWC and can be accessed with:
 ```
 this.recordId
+this.sObjectName
 ```
 ### Actions not in LwcAction context
 - To close action, show or hide spinner from component other than LwcAction:
