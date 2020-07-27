@@ -3,6 +3,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 
 export default class LwcAction extends LightningElement {
     @api recordId
+    @api sObjectName
 
     closeAction() {
         this.dispatchEvent(LwcAction.getCloseQuickAction())
