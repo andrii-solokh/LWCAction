@@ -1,9 +1,9 @@
-<aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId">
+<aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId, force:hasSObjectName">
     <aura:html tag="style">
         .slds-modal__container {
             max-width: 65vw;
             width: auto;
         }
     </aura:html>
-    <c:LWCLightningAction recordId="{!v.recordId}"/>
+    <c:LWCLightningAction recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
 </aura:component>	
