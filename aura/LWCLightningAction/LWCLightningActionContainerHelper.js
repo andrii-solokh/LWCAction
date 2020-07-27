@@ -9,9 +9,11 @@
     },
     createComponent : function(component, lwcName) {
         const recordId = component.get('v.recordId')
+        const sObjectName = component.get('v.sObjectName')
         $A.createComponent(
             `c:${lwcName}`, {
                 recordId : recordId, 
+                sObjectName : sObjectName,
                 onauraevent: component.getReference('c.onAuraEvent'),
                 onsetloading: component.getReference('c.onSetLoading'),
             }, (lwcCmp, status, errorMessage) => {
