@@ -5,5 +5,5 @@
             width: auto;
         }
     </aura:html>
-    <c:LWCLightningAction recordId="{!v.recordId}"/>
+    <c:LWCLightningAction recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
 </aura:component>	
