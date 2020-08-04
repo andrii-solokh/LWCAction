@@ -1,10 +1,20 @@
 ({
     init : function(component) {
+        this.getActionAPIName(component)
+            .then(lwcName => {
+                if (lwcName.replace(' ', '').length > 0) {
+                    this.createComponent(component, lwcName)
+                } else {
+                    const reportMessage = 'If this message appears every time, be kind to report the issue here: https://github.com/andrii-solokh/LWCAction/issues'
+                    this.displayError('Something went wrong, please, refresh the page.', reportMessage)
+                }
+            })
+    },
+    getActionAPIName : function(component) {
         const qaAPI = component.find("qaAPI")
-        qaAPI.getSelectedActions().then(response => {
+        return qaAPI.getSelectedActions().then(response => {
             const actionName = response.actions[0].actionName
-            const lwcName = actionName.split('.')[1]
-            this.createComponent(component, lwcName)
+            return actionName.split('.')[1]
         })
     },
     createComponent : function(component, lwcName) {
@@ -23,14 +33,13 @@
                     component.set("v.body", body)
                 }
                 else if (status === "INCOMPLETE") {
-                    console.log("No response from server or client is offline.")
-                    this.showToast('Error', `No response from server or client is offline.`, 'error')
-                    $A.enqueueAction(component.get('c.onСloseAction'))
+                    const errorMessage = 'No response from server or client is offline.'
+                    this.displayError(errorMessage, errorMessage)
+                    $A.enqueueAction(component.get('c.closeAction'))
                 }
                 else if (status === "ERROR") {
-                    console.error("Error: " + errorMessage)
-                    this.showToast('Error', `The '${lwcName}' LWC can't be find. Check if it's exposed.`, 'error')
-                    $A.enqueueAction(component.get('c.onСloseAction'))
+                    this.displayError(`The '${lwcName}' can't be find. Check if it's exposed.`, errorMessage)
+                    $A.enqueueAction(component.get('c.closeAction'))
                 }
             }
         )
@@ -43,8 +52,13 @@
     setLoading: function(component, loading=true) {
         component.set("v.isLoading", loading)
     },
-    showToast: function(title, message, type) {
+    displayError : function(message, errorMessage) {
+        console.error("Error: " + errorMessage)
+        this.showToast(message, 'error')
+    },
+    showToast: function(title, type, message) {
         let toast = $A.get('e.force:showToast')
+        message = message || ' '
         toast.setParams({
             title: title,
             message: message,
