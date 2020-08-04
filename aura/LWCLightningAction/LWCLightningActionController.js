@@ -8,4 +8,7 @@
     onSetLoading : function(component, event, helper) {
         helper.setLoading(component, event.getParam('isLoading'))
     },
+    closeAction : function() {
+        $A.get('e.force:closeQuickAction').fire()
+    }
 })
