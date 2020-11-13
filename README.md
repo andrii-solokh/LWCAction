@@ -11,7 +11,7 @@ To use LWC as Lightning Action we need to wrap it with Aura Component. Instead o
 ```
 <isExposed>true</isExposed>
 ```
-2. Lightning Action should invoke Aura Component 'LWCLightningAction' / 'LWCLightningActionMedium' / 'LWCLightningActionHuge' depending on needed size.
+2. Lightning Action should invoke Aura Component 'LWCLightningAction'.
 3. Lightning Action API Name should be the same as LWC API Name. I can advise naming LWC as 'SObjectName + ActionName + Action', example: 'quoteApplyDiscountAction'.
 4. LWC should extend 'LwcAction':
 ```
@@ -74,25 +74,6 @@ LwcAction.fireAuraEvent(this, 'e.force:createRecord', { entityApiName: "Contact"
 ```
 
 ### Additional Features
-- Show Toast Message call 'showToast(title, message, variant)':
-```
-this.showToast('title', 'message', 'info')
-```
-
-- To simplify wire method use 'handleWire(value, (data) => {})'. If 'value.error' is not null or passed callback throws error, the Lighting Action will be closed and error will be shown with Toast Message. 
-Example:
-```
-@wire (getData, {accountId: '$recordId', quartersCount: '$quartersCount'}) wireData (value) {
-    this.wiredData = value
-    this.handleWire(value, data => {
-        if (data.opportunities.length == 0) {
-            throw 'No opportunities'
-        }
-        this.initFilters(data.opportunities)
-    })
-}
-```
-
 - You can keep component hidden until it's ready to be presented by wrapping it with:
 ```
 <template if:true={isReady}></template>
