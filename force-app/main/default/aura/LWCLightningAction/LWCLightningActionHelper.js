@@ -54,7 +54,7 @@
     if (params) event.setParams(params);
     event.fire();
   },
-  setLoading: function (component, loading = true) {
+  setLoading: function (component, loading) {
     component.set("v.isLoading", loading);
   },
   displayError: function (message, errorMessage) {
