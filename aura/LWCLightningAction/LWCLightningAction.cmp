@@ -1,17 +1,22 @@
 <aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId, force:hasSObjectName">
-<aura:html tag="style">
-        .slds-modal__content {
-            max-height: 95vh !important;
-            height: auto !important;
-        }
-    </aura:html>
-    <aura:attribute name="isLoading" type="Boolean" default="true"/>
-    <lightning:quickActionAPI aura:id="qaAPI"/>
-    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
-    <div>
-      {!v.body}
-      <aura:if isTrue="{!v.isLoading}">
-        <lightning:spinner alternativeText="Loading..."/>
-      </aura:if>
-    </div>
-</aura:component>	
+  <aura:html tag="style">
+    .slds-modal > .slds-modal__container > .slds-modal__content {
+      max-height: 95vh !important;
+      height: auto !important;
+      padding: 0 !important;
+    }
+
+    .container > .cuf-content {
+      padding: 0 !important;
+    }
+  </aura:html>
+  <aura:attribute name="isLoading" type="Boolean" default="true" />
+  <lightning:quickActionAPI aura:id="qaAPI" />
+  <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+  <div>
+    {!v.body}
+    <aura:if isTrue="{!v.isLoading}">
+      <lightning:spinner alternativeText="Loading..." />
+    </aura:if>
+  </div>
+</aura:component>

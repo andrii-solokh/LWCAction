@@ -1,8 +1,8 @@
 .THIS {
-    min-height: 100px;
-    position: relative;
+  min-height: 100px;
+  position: relative;
 }
 
 .THIS .slds-spinner {
-    position: sticky;
+  position: sticky;
 }
