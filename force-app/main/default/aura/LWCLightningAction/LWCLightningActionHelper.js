@@ -1,7 +1,7 @@
 ({
   init: function (component) {
     this.getActionAPIName(component).then((lwcName) => {
-      if (lwcName.replace(" ", "").length > 0) {
+      if (lwcName) {
         this.createComponent(component, lwcName);
       } else {
         const reportMessage =
@@ -19,8 +19,8 @@
   getActionAPIName: function (component) {
     const qaAPI = component.find("qaAPI");
     return qaAPI.getSelectedActions().then((response) => {
-      const actionName = response.actions[0].actionName;
-      return actionName.split(".")[1];
+      const actionName = response.actions.shift().actionName;
+      return actionName.split(".").pop();
     });
   },
   createComponent: function (component, lwcName) {
@@ -32,7 +32,7 @@
         recordId: recordId,
         sObjectName: sObjectName,
         onauraevent: component.getReference("c.onAuraEvent"),
-        onsetloading: component.getReference("c.onSetLoading"),
+        onsetloading: component.getReference("c.onSetLoading")
       },
       (lwcCmp, status, errorMessage) => {
         if (status === "SUCCESS") {
@@ -65,8 +65,8 @@
     const toast = $A.get("e.force:showToast");
     toast.setParams({
       message: message,
-      type: type,
+      type: type
     });
     toast.fire();
-  },
+  }
 });
