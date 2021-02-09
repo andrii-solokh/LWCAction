@@ -3,11 +3,17 @@
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
+
+
 # LWCAction
 
 To use LWC as Lightning Action we need to wrap it with Aura Component. Instead of creating new unnecessary Aura Components, coding close Lightning Action event handlers and adding spinners, we can create generic Aura Component which will dynamically create LWC depending on Lighting Action API Name.
 
 ![](demo.gif)
+
+### Sample code
+
+https://github.com/andrii-solokh/LWCAction-samplecode
 
 ### How to use
 
