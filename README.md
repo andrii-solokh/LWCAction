@@ -1,9 +1,14 @@
+⚡ IMPORTANT ⚡
+==========================
+
+Due to Summer '21 release, LWC is now natively available as Quick Action.
+
+<br/>
+
 <a href="https://githubsfdeploy.herokuapp.com">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
-
-
 
 # LWCAction
 
